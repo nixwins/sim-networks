@@ -24,7 +24,7 @@ export class DirService {
         this.#eventEmiter.emit(this.#eventsTypes.ERROR, `Path ${this.#pathToWatch} doesn't exists`);
         return;
       }
-      const initFiles = fs.readdirSync(this.#pathToWatch);
+      let initFiles = fs.readdirSync(this.#pathToWatch);
 
       this.#watcher = fs.watch(this.#pathToWatch, (eventType, file) => {
         const watchedFiles = fs.readdirSync(this.#pathToWatch);
